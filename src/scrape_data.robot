@@ -23,8 +23,6 @@ Valid Login
 Go to bank statement page
     sleep   3s
     select frame      xpath:/html/frameset/frameset/frame
-    ${source} =   Get Source
-    log   ${source}
     current frame should contain    Enquire
     click element     xpath://*[@id="enquirytab"]
     click element    xpath://*[@id="SIN_nohref"]/a/span
@@ -35,8 +33,10 @@ Go to bank statement page
 Download report
     sleep   3s
     select frame   xpath:/html/frameset/frameset/frameset/frame[1]
-    select from list by value   /html/body/form/table[6]/tbody/tr[1]/td[2]/select   C
-    click element    xpath:/html/body/form/table[6]/tbody/tr[2]/td/a/img
+    #${source} =   Get Source
+    #log   ${source}
+    select from list by value   name=fldFormatType   C
+    click element    xpath:/html/body/form/table[10]/tbody/tr[2]/td/a/img
     unselect frame
 
 
@@ -60,7 +60,7 @@ Fill in data
     click element   xpath://*[@id="hideradio"]/span
     Input text      frmDatePicker   01/05/2021
     Input text      toDatePicker    30/05/2021
-    select from list by value   name:cmbNbrStmt   40
+    select from list by value   name:cmbNbrStmt   10
     click element   xpath:/html/body/form/table[1]/tbody/tr[7]/td/a
     unselect frame
 
