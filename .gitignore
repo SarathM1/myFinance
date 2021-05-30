@@ -1,0 +1,11 @@
+node_modules
+package-lock.json
+geckodriver.log
+test_report.html
+**/__pycache__/
+tests/geckodriver.log
+sensitive_data.py
+**/*.png
+**/*.log
+**/*.xml
+**/*.html

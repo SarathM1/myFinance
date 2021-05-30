@@ -1,0 +1,12 @@
+---
+- name: Running python scriopt
+  hosts: localhost
+  tasks:
+    - name: run my script!
+      command: ./main.py
+      args:
+          chdir: "{{playbook_dir}}/src"
+      delegate_to: 127.0.0.1
+      run_once: true
+      environment:
+        PATH: "{{playbook_dir}}/node_modules/geckodriver/bin/:{{ ansible_env.PATH }}"
