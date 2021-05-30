@@ -19,9 +19,6 @@ Valid Login
     Select Checkbox  name=chkrsastu
     Submit Credentials
     Unselect Frame
-    Unselect Frame
-    #${source} =   Get Source
-    #log   ${source}
     #Welcome Page Should Be Open
 
 Go to bank statement page
