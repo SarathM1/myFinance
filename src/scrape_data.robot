@@ -13,13 +13,12 @@ ${BROWSER}        firefox
 *** Test Cases ***
 Valid Login
     Open Browser To Login Page
+    Execute Manual Step    Please enter the customer id and hit coninue
     Select login Frame
-    Input Customer ID
-    Input Password
     Select Checkbox  name=chkrsastu
-    Submit Credentials
     Unselect Frame
-    #Welcome Page Should Be Open
+    Execute Manual Step    Please enter your credentials and login
+    Welcome Page Should Be Open
 
 Go to bank statement page
     sleep   3s
@@ -34,7 +33,7 @@ Go to bank statement page
     Fill in data
 
 Download report
-    sleep   5s
+    sleep   3s
     select frame   xpath:/html/frameset/frameset/frameset/frame[1]
     select from list by value   /html/body/form/table[6]/tbody/tr[1]/td[2]/select   C
     click element    xpath:/html/body/form/table[6]/tbody/tr[2]/td/a/img
@@ -49,16 +48,6 @@ Select login frame
 Open Browser To Login Page
     Open Browser    ${LOGIN URL}    ${BROWSER}
     Title Should Be    Welcome to HDFC Bank NetBanking
-
-Input Customer ID
-    ${customer_id}=  Get Value From User   Enter the customer id   hidden= True
-    Input Text     name=fldLoginUserId    ${customer_id}
-    Press Keys     fldLoginUserId   RETURN
-
-Input Password
-    ${password}=  Get Value From User   Enter the IPIN   hidden= True
-    Wait Until Element Is Visible    fldPassword
-    Input Text     fldPassword   ${password}
 
 Submit Credentials
     Execute Manual Step    Please complete the CAPTCHA portion of the form.
@@ -75,10 +64,7 @@ Fill in data
     click element   xpath:/html/body/form/table[1]/tbody/tr[7]/td/a
     unselect frame
 
-
 Welcome Page Should Be Open
-    Select Frame   class:gbx-installed
-    Select Frame   name:common_menu1
+    Select Frame   xpath:/html/frameset/frame
     Current frame should contain    SARATH M
-    Unselect frame
     Unselect frame
