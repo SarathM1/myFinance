@@ -22,10 +22,6 @@ Valid Login
     #Welcome Page Should Be Open
 
 Go to bank statement page
-    #Go to statement page manually
-    #${source} =   Get Source
-    #log   ${source}
-
     sleep   3s
     select frame      xpath:/html/frameset/frameset/frame
     ${source} =   Get Source
@@ -33,16 +29,12 @@ Go to bank statement page
     current frame should contain    Enquire
     click element     xpath://*[@id="enquirytab"]
     click element    xpath://*[@id="SIN_nohref"]/a/span
-    #Click Button    enquiryatag
-    ##Click Element   #SIN_nohref > a > span
-    #Click element   xpath://*[@id="SIN_nohref"]/a/span
     unselect frame
     sleep   3s
     Fill in data
 
 Download report
     sleep   5s
-    #select from list by value   fldFormatType   C
     select frame   xpath:/html/frameset/frameset/frameset/frame[1]
     select from list by value   /html/body/form/table[6]/tbody/tr[1]/td[2]/select   C
     click element    xpath:/html/body/form/table[6]/tbody/tr[2]/td/a/img
@@ -71,7 +63,6 @@ Input Password
 Submit Credentials
     Execute Manual Step    Please complete the CAPTCHA portion of the form.
     Press Keys     fldPassword   RETURN
-    #Click Button    xpath://img[@alt="Login"]
 
 Fill in data
     select frame           xpath:/html/frameset/frameset/frameset/frame[1]
@@ -80,7 +71,6 @@ Fill in data
     click element   xpath://*[@id="hideradio"]/span
     Input text      frmDatePicker   01/05/2021
     Input text      toDatePicker    30/05/2021
-    #click element    viewBtn
     select from list by value   name:cmbNbrStmt   40
     click element   xpath:/html/body/form/table[1]/tbody/tr[7]/td/a
     unselect frame
