@@ -4,5 +4,7 @@ https://medium.com/@aashray/daily-code-3-automating-your-budget-management-with-
 https://tdhopper.com/blog/automating-python-with-ansible
 
 # install webdriver
+```sh
 pip install webdrivermanager
 webdrivermanager firefox
+```
