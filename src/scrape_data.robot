@@ -14,10 +14,6 @@ ${BROWSER}        firefox
 *** Test Cases ***
 Valid Login
     Open Browser To Login Page
-    Execute Manual Step    Please enter the customer id and hit coninue
-    Select login Frame
-    Select Checkbox  name=chkrsastu
-    Unselect Frame
     Execute Manual Step    Please enter your credentials and login
     Welcome Page Should Be Open
 
