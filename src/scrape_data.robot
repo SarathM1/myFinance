@@ -36,7 +36,7 @@ Download report
     #${source} =   Get Source
     #log   ${source}
     select from list by value   name=fldFormatType   C
-    click element    xpath:/html/body/form/table[10]/tbody/tr[2]/td/a/img
+    click element    css:.formtable > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > a:nth-child(1) > img:nth-child(1)
     unselect frame
 
 
