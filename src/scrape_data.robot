@@ -3,6 +3,7 @@
 Documentation     Simple example using SeleniumLibrary.
 Library           SeleniumLibrary
 Library           Dialogs
+Library           DateTime
 #Suite Teardown    Close Browser
 
 
@@ -41,6 +42,16 @@ Download report
 
 
 *** Keywords ***
+get date range
+    ${cur_date} =   Get Current Date   result_format=datetime
+    ${first day} =  set variable   01/${cur_date.month}/${cur_date.year}
+    ${last day} =   set variable   ${cur_date.day}/${cur_date.month}/${cur_date.year}
+    ${last day} =   Convert Date   ${last day}    date_format=%d/%m/%Y     result_format=%d/%m/%Y
+    ${first day} =   Convert Date   ${first day}    date_format=%d/%m/%Y   result_format=%d/%m/%Y
+    [return]   ${first day}   ${last day}
+
+
+
 Select login frame
     Wait Until Element Is Visible    login_page
     Select Frame    login_page
@@ -58,8 +69,9 @@ Fill in data
     select from list by value   name:selAccttype  SCA
     Execute Manual Step    Please select the account
     click element   xpath://*[@id="hideradio"]/span
-    Input text      frmDatePicker   01/05/2021
-    Input text      toDatePicker    30/05/2021
+    ${first day}   ${last day} =   get date range
+    Input text      frmDatePicker   ${first day}
+    Input text      toDatePicker    ${last day}
     select from list by value   name:cmbNbrStmt   10
     click element   xpath:/html/body/form/table[1]/tbody/tr[7]/td/a
     unselect frame
